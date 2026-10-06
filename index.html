@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跳转短信</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding-top: 50px; 
+        }
+        .btn { 
+            padding: 15px 30px; 
+            font-size: 18px; 
+            background: #007bff; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer;
+            display:block;
+            margin:12px auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>点击下方按钮发送短信</h3>
+    <button class="btn" onclick="sendSMS_YD()">中国移动</button>
+    <button class="btn" onclick="sendSMS_LT()">中国联通</button>
+    <button class="btn" onclick="sendSMS_DX()">中国电信</button>
+    <button class="btn" onclick="sendSMS_GD()">中国广电</button>
+    
+    <script>
+        // 中国移动
+        function sendSMS_YD() {
+            const name = "你的姓名";
+            const idCard = "你的身份证号码";
+            const phone = "10086";
+            const content = `smhd#${name}#${idCard}`;
+            const smsUrl = `sms:${phone}?body=${encodeURIComponent(content)}`;
+            window.location.href = smsUrl;
+        }
+
+        // 中国联通
+        function sendSMS_LT() {
+            const phone = "10010";
+            const content = "205";
+            const smsUrl = `sms:${phone}?body=${encodeURIComponent(content)}`;
+            window.location.href = smsUrl;
+        }
+
+        // 中国电信
+        function sendSMS_DX() {
+            const phone = "10001";
+            const content = "504";
+            const smsUrl = `sms:${phone}?body=${encodeURIComponent(content)}`;
+            window.location.href = smsUrl;
+        }
+
+        // 中国广电
+        function sendSMS_GD() {
+            const idCardLast4 = "身份证号后四位";
+            const phone = "10099";
+            const content = `smz#${idCardLast4}`;
+            const smsUrl = `sms:${phone}?body=${encodeURIComponent(content)}`;
+            window.location.href = smsUrl;
+        }
+    </script>
+</body>
+</html>
